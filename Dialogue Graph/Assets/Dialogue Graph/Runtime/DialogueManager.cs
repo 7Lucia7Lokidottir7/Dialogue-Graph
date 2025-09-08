@@ -111,8 +111,8 @@ namespace PG.DialogueGraph
 
             _nextDialogueAction.performed -= NextDialogue;
         }
-
-        void StartDialogue(RuntimeDialogueGraph runtimeDialogueGraph)
+        public void StartDialogue() => StartDialogue(_graph);
+        public void StartDialogue(RuntimeDialogueGraph runtimeDialogueGraph)
         {
             if (_currentDialogueNode != null)
             {
