@@ -1,0 +1,20 @@
+{
+    "name": "PG.DialougeGraph.Editor",
+    "rootNamespace": "PG.DialougeGraphEditor",
+    "references": [
+        "GUID:0050b2c674d6b7f408ea09a02bf258c1",
+        "GUID:70ef9a24f4cfc4aec911c1414e3f90ad",
+        "GUID:d1e08c06f8f9473888c892637c83c913"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
