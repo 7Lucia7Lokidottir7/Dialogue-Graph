@@ -8,7 +8,7 @@
   "dependencies": {
     "com.unity.inputsystem": "1.14.2",
     "com.unity.graphtoolkit": "0.3.0-exp.1"
-  }
+  },
   "samples": [
     {
       "displayName": "Dialogue Sample",
