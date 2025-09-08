@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "com.pg.localization-system": "https://github.com/7Lucia7Lokidottir7/unity-templates.git?path=/Templates/Assets/LocalizationSystem",
+    "com.pg.template-package-manager": "https://github.com/7Lucia7Lokidottir7/unity-templates.git?path=/Templates/Assets/TemplatesPackageManager",
     "com.unity.ai.navigation": "2.0.8",
     "com.unity.collab-proxy": "2.9.3",
     "com.unity.graphtoolkit": "0.3.0-exp.1",

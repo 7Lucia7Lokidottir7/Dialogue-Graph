@@ -1,5 +1,19 @@
 {
   "dependencies": {
+    "com.pg.localization-system": {
+      "version": "https://github.com/7Lucia7Lokidottir7/unity-templates.git?path=/Templates/Assets/LocalizationSystem",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "615fec2f8897f38a51e5b707604755c6b61f01eb"
+    },
+    "com.pg.template-package-manager": {
+      "version": "https://github.com/7Lucia7Lokidottir7/unity-templates.git?path=/Templates/Assets/TemplatesPackageManager",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "615fec2f8897f38a51e5b707604755c6b61f01eb"
+    },
     "com.unity.ai.navigation": {
       "version": "2.0.8",
       "depth": 0,
