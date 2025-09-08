@@ -3,11 +3,11 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-namespace PG.DialougeGraph
+namespace PG.DialogueGraph
 {
-    public class DialougeManager : MonoBehaviour
+    public class DialogueManager : MonoBehaviour
     {
-        [SerializeField] private RuntimeDialougeGraph _graph;
+        [SerializeField] private RuntimeDialogueGraph _graph;
         [SerializeField] private InputActionProperty _nextDialogueProperty;
         private InputAction _nextDialogueAction;
 
@@ -25,7 +25,7 @@ namespace PG.DialougeGraph
         private Dictionary<string, RuntimeDialogueNode> _nodeLookup;
         private RuntimeDialogueNode _currentDialogueNode;
 
-        public event System.Action<RuntimeDialougeGraph> dialogueStarted;
+        public event System.Action<RuntimeDialogueGraph> dialogueStarted;
         public event System.Action<RuntimeDialogueNode> dialogueChanged;
         public event System.Action dialogueEnded;
         private void Awake()
@@ -112,14 +112,14 @@ namespace PG.DialougeGraph
             _nextDialogueAction.performed -= NextDialogue;
         }
 
-        void StartDialogue(RuntimeDialougeGraph runtimeDialougeGraph)
+        void StartDialogue(RuntimeDialogueGraph runtimeDialogueGraph)
         {
             if (_currentDialogueNode != null)
             {
                 EndDialogue();
             }
 
-            _graph = runtimeDialougeGraph;
+            _graph = runtimeDialogueGraph;
             dialogueStarted?.Invoke(_graph);
             foreach (var node in _graph.allNodes)
             {

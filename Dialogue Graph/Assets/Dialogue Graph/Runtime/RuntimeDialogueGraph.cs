@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace PG.DialougeGraph
+namespace PG.DialogueGraph
 {
-    public class RuntimeDialougeGraph : ScriptableObject
+    public class RuntimeDialogueGraph : ScriptableObject
     {
         public string entryNodeID;
         public List<RuntimeDialogueNode> allNodes = new List<RuntimeDialogueNode>();

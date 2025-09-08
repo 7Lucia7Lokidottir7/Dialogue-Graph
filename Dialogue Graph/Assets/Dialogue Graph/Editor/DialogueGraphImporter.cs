@@ -5,18 +5,18 @@ using UnityEditor.AssetImporters;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace PG.DialougeGraphEditor
+namespace PG.DialogueGraphEditor
 {
-    using PG.DialougeGraph;
+    using PG.DialogueGraph;
 
-    [ScriptedImporter(1, DialougeGraph.ASSET_EXTENSION)]
-    public class DialougeGraphImporter : ScriptedImporter
+    [ScriptedImporter(1, DialogueGraph.ASSET_EXTENSION)]
+    public class DialogueGraphImporter : ScriptedImporter
     {
         public override void OnImportAsset(AssetImportContext ctx)
         {
-            DialougeGraph editorGraph = GraphDatabase.LoadGraphForImporter<DialougeGraph>(ctx.assetPath);
+            DialogueGraph editorGraph = GraphDatabase.LoadGraphForImporter<DialogueGraph>(ctx.assetPath);
 
-            RuntimeDialougeGraph runtimeGraph = ScriptableObject.CreateInstance<RuntimeDialougeGraph>();
+            RuntimeDialogueGraph runtimeGraph = ScriptableObject.CreateInstance<RuntimeDialogueGraph>();
 
             var nodeIDMap = new Dictionary<INode, string>();
             foreach (var node in editorGraph.GetNodes())

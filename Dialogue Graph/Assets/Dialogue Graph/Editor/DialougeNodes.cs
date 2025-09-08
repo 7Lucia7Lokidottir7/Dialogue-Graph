@@ -1,6 +1,6 @@
 using System;
 using Unity.GraphToolkit.Editor;
-namespace PG.DialougeGraphEditor
+namespace PG.DialogueGraphEditor
 {
     [Serializable]
     public class StartNode : Node

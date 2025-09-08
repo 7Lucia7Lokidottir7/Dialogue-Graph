@@ -1,6 +1,6 @@
 {
-    "name": "PG.DialougeGraph.Editor",
-    "rootNamespace": "PG.DialougeGraphEditor",
+    "name": "PG.DialogueGraph.Editor",
+    "rootNamespace": "PG.DialogueGraphEditor",
     "references": [
         "GUID:0050b2c674d6b7f408ea09a02bf258c1",
         "GUID:70ef9a24f4cfc4aec911c1414e3f90ad",
