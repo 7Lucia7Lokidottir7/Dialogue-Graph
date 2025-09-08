@@ -22,7 +22,7 @@ namespace PG.DialogueGraph
         [SerializeField] private Button _choiceButtonPrefab;
         [SerializeField] private Transform _choiceButtonContainer;
 
-        private Dictionary<string, RuntimeDialogueNode> _nodeLookup;
+        private Dictionary<string, RuntimeDialogueNode> _nodeLookup = new Dictionary<string, RuntimeDialogueNode>();
         private RuntimeDialogueNode _currentDialogueNode;
 
         public event System.Action<RuntimeDialogueGraph> dialogueStarted;
@@ -68,7 +68,7 @@ namespace PG.DialogueGraph
                     {
                         Button button = Instantiate(_choiceButtonPrefab, _choiceButtonContainer);
 
-                        TextMeshProUGUI buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
+                        TMP_Text buttonText = button.GetComponentInChildren<TMP_Text>();
                         if (buttonText != null)
                         {
                             buttonText.text = choice.choiceText;
@@ -142,7 +142,7 @@ namespace PG.DialogueGraph
         {
             if (_currentDialogueNode != null && _currentDialogueNode.choices.Count == 0)
             {
-                if (string.IsNullOrEmpty(_currentDialogueNode.nextNodeID))
+                if (!string.IsNullOrEmpty(_currentDialogueNode.nextNodeID))
                 {
                     ShowNode(_currentDialogueNode.nextNodeID);
                 }
