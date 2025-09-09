@@ -438,9 +438,11 @@ MonoBehaviour:
           m_KeyList:
           - Speaker
           - Dialogue
+          - Node Key
           m_ValueList:
           - rid: 3063721170577915910
           - rid: 3063721170577915911
+          - rid: 3063721197628817521
         m_InputPortInfos:
           expandedPortsById:
             m_KeyList: []
@@ -492,6 +494,7 @@ MonoBehaviour:
           - Choice Text 1
           - Choice Text 2
           - Choice Text 3
+          - Node Key
           m_ValueList:
           - rid: 3063721170577915914
           - rid: 3063721170577915915
@@ -500,6 +503,7 @@ MonoBehaviour:
           - rid: 3063721170577915918
           - rid: 3063721170577915920
           - rid: 3063721170577915921
+          - rid: 3063721197628817522
         m_InputPortInfos:
           expandedPortsById:
             m_KeyList: []
@@ -566,9 +570,11 @@ MonoBehaviour:
           m_KeyList:
           - Speaker
           - Dialogue
+          - Node Key
           m_ValueList:
           - rid: 3063721170577915965
           - rid: 3063721170577915966
+          - rid: 3063721197628817523
         m_InputPortInfos:
           expandedPortsById:
             m_KeyList: []
@@ -711,9 +717,11 @@ MonoBehaviour:
           m_KeyList:
           - Speaker
           - Dialogue
+          - Node Key
           m_ValueList:
           - rid: 3063721170577915975
           - rid: 3063721170577915976
+          - rid: 3063721197628817524
         m_InputPortInfos:
           expandedPortsById:
             m_KeyList: []
@@ -792,9 +800,11 @@ MonoBehaviour:
           m_KeyList:
           - Speaker
           - Dialogue
+          - Node Key
           m_ValueList:
           - rid: 3063721170577915983
           - rid: 3063721170577915984
+          - rid: 3063721197628817525
         m_InputPortInfos:
           expandedPortsById:
             m_KeyList: []
@@ -841,9 +851,11 @@ MonoBehaviour:
           m_KeyList:
           - Speaker
           - Dialogue
+          - Node Key
           m_ValueList:
           - rid: 3063721170577915990
           - rid: 3063721170577915991
+          - rid: 3063721197628817526
         m_InputPortInfos:
           expandedPortsById:
             m_KeyList: []
@@ -890,9 +902,11 @@ MonoBehaviour:
           m_KeyList:
           - Speaker
           - Dialogue
+          - Node Key
           m_ValueList:
           - rid: 3063721170577915997
           - rid: 3063721170577915998
+          - rid: 3063721197628817527
         m_InputPortInfos:
           expandedPortsById:
             m_KeyList: []
@@ -1707,6 +1721,34 @@ MonoBehaviour:
         m_Version: 2
         m_Name: Player Name - MainPortName
     - rid: 3063721173447868426
+      type: {class: 'Constant`1[[System.String, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data:
+        m_Value: 
+    - rid: 3063721197628817521
+      type: {class: 'Constant`1[[System.String, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data:
+        m_Value: 
+    - rid: 3063721197628817522
+      type: {class: 'Constant`1[[System.String, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data:
+        m_Value: 
+    - rid: 3063721197628817523
+      type: {class: 'Constant`1[[System.String, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data:
+        m_Value: 
+    - rid: 3063721197628817524
+      type: {class: 'Constant`1[[System.String, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data:
+        m_Value: 
+    - rid: 3063721197628817525
+      type: {class: 'Constant`1[[System.String, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data:
+        m_Value: 
+    - rid: 3063721197628817526
+      type: {class: 'Constant`1[[System.String, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data:
+        m_Value: 
+    - rid: 3063721197628817527
       type: {class: 'Constant`1[[System.String, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
       data:
         m_Value: 
