@@ -56,6 +56,7 @@ namespace PG.DialogueGraphEditor
         }
         private void ProcessDialogueNode(DialogueNode node, RuntimeDialogueNode runtimeNode, Dictionary<INode, string> nodeIDMap)
         {
+            node.GetNodeOptionByName("Node Key").TryGetValue(out runtimeNode.nodeKey);
             runtimeNode.speakerName = GetPortValue<string>(node.GetInputPortByName("Speaker"));
             runtimeNode.dialogueText = GetPortValue<string>(node.GetInputPortByName("Dialogue"));
 
@@ -67,6 +68,7 @@ namespace PG.DialogueGraphEditor
         }
         private void ProcessChoiceNode(ChoiceNode node, RuntimeDialogueNode runtimeNode, Dictionary<INode, string> nodeIDMap)
         {
+            node.GetNodeOptionByName("Node Key").TryGetValue(out runtimeNode.nodeKey);
             runtimeNode.speakerName = GetPortValue<string>(node.GetInputPortByName("Speaker"));
             runtimeNode.dialogueText = GetPortValue<string>(node.GetInputPortByName("Dialogue"));
 

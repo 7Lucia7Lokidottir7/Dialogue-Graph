@@ -14,9 +14,9 @@ namespace PG.DialogueGraph
     public class RuntimeDialogueNode
     {
         public string nodeID;
+        public string nodeKey;
         public string speakerName;
         public string dialogueText;
-        public string dialogueKey;
         public List<ChoiceData> choices = new List<ChoiceData>();
         public string nextNodeID;
     }

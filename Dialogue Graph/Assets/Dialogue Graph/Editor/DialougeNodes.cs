@@ -34,6 +34,10 @@ namespace PG.DialogueGraphEditor
             context.AddInputPort<string>("Speaker").Build();
             context.AddInputPort<string>("Dialogue").Build();
         }
+        protected override void OnDefineOptions(IOptionDefinitionContext context)
+        {
+            context.AddOption<string>("Node Key").Delayed().Build();
+        }
     }
 
     [Serializable]
@@ -59,6 +63,7 @@ namespace PG.DialogueGraphEditor
         }
         protected override void OnDefineOptions(IOptionDefinitionContext context)
         {
+            context.AddOption<string>("Node Key").Delayed().Build();
             context.AddOption<int>(_OPTION_ID).WithDefaultValue(2).Delayed().Build();
         }
     }
