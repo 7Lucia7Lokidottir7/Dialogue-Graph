@@ -7,27 +7,36 @@ namespace PG.DialogueGraph
 {
     public class DialogueManager : MonoBehaviour
     {
-        [SerializeField] private RuntimeDialogueGraph _graph;
-        [SerializeField] private InputActionProperty _nextDialogueProperty;
-        private InputAction _nextDialogueAction;
+        [SerializeField] protected RuntimeDialogueGraph _graph;
+        [SerializeField] protected InputActionProperty _nextDialogueProperty;
+        protected InputAction _nextDialogueAction;
 
-        [SerializeField] private bool _startDialogueOnStart;
+        [SerializeField] protected bool _startDialogueOnStart;
 
         [Header("UI")]
-        [SerializeField] private GameObject _dialoguePanel;
-        [SerializeField] private TMP_Text _speakerNameObject;
-        [SerializeField] private TMP_Text _dialogueTextObject;
+        [SerializeField] protected GameObject _dialoguePanel;
+        [SerializeField] protected TMP_Text _speakerNameObject;
+        [SerializeField] protected TMP_Text _dialogueTextObject;
 
         [Header("Choice Button UI")]
-        [SerializeField] private Button _choiceButtonPrefab;
-        [SerializeField] private Transform _choiceButtonContainer;
+        [SerializeField] protected Button _choiceButtonPrefab;
+        [SerializeField] protected Transform _choiceButtonContainer;
 
-        private Dictionary<string, RuntimeDialogueNode> _nodeLookup = new Dictionary<string, RuntimeDialogueNode>();
-        private RuntimeDialogueNode _currentDialogueNode;
+        protected Dictionary<string, RuntimeDialogueNode> _nodeLookup = new Dictionary<string, RuntimeDialogueNode>();
+        public RuntimeDialogueNode currentDialogueNode { get; protected set; }
 
         public event System.Action<RuntimeDialogueGraph> dialogueStarted;
         public event System.Action<RuntimeDialogueNode> dialogueChanged;
         public event System.Action dialogueEnded;
+
+        #region Invoke event Actions
+        protected void InvokeDialogueChanged(RuntimeDialogueNode runtimeDialogueNode) => dialogueChanged?.Invoke(runtimeDialogueNode);
+        protected void InvokeDialogueStarted(RuntimeDialogueGraph runtimeDialogueGraph) => dialogueStarted?.Invoke(runtimeDialogueGraph);
+        protected void InvokeDialogueEnded() => dialogueEnded?.Invoke(); 
+        #endregion
+
+
+
         private void Awake()
         {
             _nextDialogueAction = InputSystem.actions.FindAction(_nextDialogueProperty.reference.name);
@@ -39,21 +48,21 @@ namespace PG.DialogueGraph
                 StartDialogue(_graph);
             }
         }
-        void ShowNode(string nodeID)
+        protected virtual void ShowNode(string nodeID)
         {
             if (!_nodeLookup.ContainsKey(nodeID))
             {
                 return;
             }
-            _currentDialogueNode = _nodeLookup[nodeID];
+            currentDialogueNode = _nodeLookup[nodeID];
 
 
-            dialogueChanged?.Invoke(_nodeLookup[_currentDialogueNode.nodeID]);
+            dialogueChanged?.Invoke(_nodeLookup[currentDialogueNode.nodeID]);
 
-            if (_currentDialogueNode != null)
+            if (currentDialogueNode != null)
             {
-                _speakerNameObject.SetText(_currentDialogueNode.speakerName);
-                _dialogueTextObject.SetText(_currentDialogueNode.dialogueText);
+                _speakerNameObject.SetText(currentDialogueNode.speakerName);
+                _dialogueTextObject.SetText(currentDialogueNode.dialogueText);
                 _dialoguePanel.SetActive(true);
 
 
@@ -62,9 +71,9 @@ namespace PG.DialogueGraph
                     Destroy(child.gameObject);
                 }
 
-                if (_currentDialogueNode.choices.Count > 0)
+                if (currentDialogueNode.choices.Count > 0)
                 {
-                    foreach (var choice in _currentDialogueNode.choices)
+                    foreach (var choice in currentDialogueNode.choices)
                     {
                         Button button = Instantiate(_choiceButtonPrefab, _choiceButtonContainer);
 
@@ -94,7 +103,7 @@ namespace PG.DialogueGraph
             }
         }
 
-        void EndDialogue()
+        protected void EndDialogue()
         {
             _speakerNameObject.SetText("");
             _dialogueTextObject.SetText("");
@@ -106,7 +115,7 @@ namespace PG.DialogueGraph
             }
 
 
-            _currentDialogueNode = null;
+            currentDialogueNode = null;
             dialogueEnded?.Invoke();
 
             _nextDialogueAction.performed -= NextDialogue;
@@ -114,7 +123,7 @@ namespace PG.DialogueGraph
         public void StartDialogue() => StartDialogue(_graph);
         public void StartDialogue(RuntimeDialogueGraph runtimeDialogueGraph)
         {
-            if (_currentDialogueNode != null)
+            if (currentDialogueNode != null)
             {
                 EndDialogue();
             }
@@ -140,11 +149,11 @@ namespace PG.DialogueGraph
         // Update is called once per frame
         void NextDialogue(InputAction.CallbackContext context)
         {
-            if (_currentDialogueNode != null && _currentDialogueNode.choices.Count == 0)
+            if (currentDialogueNode != null && currentDialogueNode.choices.Count == 0)
             {
-                if (!string.IsNullOrEmpty(_currentDialogueNode.nextNodeID))
+                if (!string.IsNullOrEmpty(currentDialogueNode.nextNodeID))
                 {
-                    ShowNode(_currentDialogueNode.nextNodeID);
+                    ShowNode(currentDialogueNode.nextNodeID);
                 }
                 else
                 {
