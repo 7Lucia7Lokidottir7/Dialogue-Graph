@@ -36,7 +36,7 @@ namespace PG.DialogueGraphEditor
 
             foreach (var iNode in editorGraph.GetNodes())
             {
-                if (iNode is StartNode || iNode is EndNode) continue;
+                if (iNode is StartNode) continue;
 
                 var runtimeNode = new RuntimeDialogueNode { nodeID = nodeIDMap[iNode] };
                 if (iNode is DialogueNode dialogueNode)

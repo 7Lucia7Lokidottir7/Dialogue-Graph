@@ -27,9 +27,11 @@ namespace PG.DialogueGraph
 
         public event System.Action<RuntimeDialogueGraph> dialogueStarted;
         public event System.Action<RuntimeDialogueNode> dialogueChanged;
+        public event System.Action<RuntimeDialogueNode> previousDialogueChanged;
         public event System.Action dialogueEnded;
 
         #region Invoke event Actions
+        protected void InvokePreviousDialogueChanged(RuntimeDialogueNode runtimeDialogueNode) => previousDialogueChanged?.Invoke(runtimeDialogueNode);
         protected void InvokeDialogueChanged(RuntimeDialogueNode runtimeDialogueNode) => dialogueChanged?.Invoke(runtimeDialogueNode);
         protected void InvokeDialogueStarted(RuntimeDialogueGraph runtimeDialogueGraph) => dialogueStarted?.Invoke(runtimeDialogueGraph);
         protected void InvokeDialogueEnded() => dialogueEnded?.Invoke(); 
@@ -153,6 +155,7 @@ namespace PG.DialogueGraph
             {
                 if (!string.IsNullOrEmpty(currentDialogueNode.nextNodeID))
                 {
+                    InvokePreviousDialogueChanged(currentDialogueNode);
                     ShowNode(currentDialogueNode.nextNodeID);
                 }
                 else
