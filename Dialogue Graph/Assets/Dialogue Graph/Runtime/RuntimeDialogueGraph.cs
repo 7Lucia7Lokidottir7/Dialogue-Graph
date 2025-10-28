@@ -17,8 +17,10 @@ namespace PG.DialogueGraph
         public string nodeKey;
         public string speakerName;
         public string dialogueText;
+        public Sprite background;
         public List<ChoiceData> choices = new List<ChoiceData>();
         public string nextNodeID;
+        public string jsonData;
     }
 
     [Serializable]

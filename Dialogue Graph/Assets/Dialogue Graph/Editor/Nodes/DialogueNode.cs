@@ -3,7 +3,7 @@ using Unity.GraphToolkit.Editor;
 namespace PG.DialogueGraphEditor
 {
     [Serializable]
-    public class DialogueNode : Node
+    public class DialogueNode : BaseNode
     {
         protected override void OnDefinePorts(IPortDefinitionContext context)
         {

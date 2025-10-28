@@ -39,13 +39,20 @@ namespace PG.DialogueGraphEditor
                 if (iNode is StartNode) continue;
 
                 var runtimeNode = new RuntimeDialogueNode { nodeID = nodeIDMap[iNode] };
-                if (iNode is DialogueNode dialogueNode)
+                switch (iNode)
                 {
-                    ProcessDialogueNode(dialogueNode, runtimeNode, nodeIDMap);
-                }
-                else if (iNode is ChoiceNode choiceNode)
-                {
-                    ProcessChoiceNode(choiceNode, runtimeNode, nodeIDMap);
+                    case DialogueNode:
+                        DialogueNode dialogueNode = (DialogueNode)iNode;
+                        ProcessDialogueNode(dialogueNode, runtimeNode, nodeIDMap);
+                        break;
+                    case ChoiceNode:
+                        ChoiceNode choiceNode = (ChoiceNode)iNode;
+                        ProcessChoiceNode(choiceNode, runtimeNode, nodeIDMap);
+                        break;
+                    case SetBackgroundNode:
+                        SetBackgroundNode backgroundNode = (SetBackgroundNode)iNode;
+                        ProcessSetBackgroundNode(backgroundNode, runtimeNode, nodeIDMap);
+                        break;
                 }
 
 
@@ -59,6 +66,17 @@ namespace PG.DialogueGraphEditor
             node.GetNodeOptionByName("Node Key").TryGetValue(out runtimeNode.nodeKey);
             runtimeNode.speakerName = GetPortValue<string>(node.GetInputPortByName("Speaker"));
             runtimeNode.dialogueText = GetPortValue<string>(node.GetInputPortByName("Dialogue"));
+
+            var nextNodePort = node.GetOutputPortByName("out").firstConnectedPort;
+            if (nextNodePort != null)
+            {
+                runtimeNode.nextNodeID = nodeIDMap[nextNodePort.GetNode()];
+            }
+        }
+        private void ProcessSetBackgroundNode(SetBackgroundNode node, RuntimeDialogueNode runtimeNode, Dictionary<INode, string> nodeIDMap)
+        {
+            node.GetNodeOptionByName("Node Key").TryGetValue(out runtimeNode.nodeKey);
+            runtimeNode.background = GetPortValue<Sprite>(node.GetInputPortByName("Background"));
 
             var nextNodePort = node.GetOutputPortByName("out").firstConnectedPort;
             if (nextNodePort != null)

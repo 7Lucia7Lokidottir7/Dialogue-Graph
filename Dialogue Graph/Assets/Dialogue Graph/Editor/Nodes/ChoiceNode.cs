@@ -3,7 +3,7 @@ using Unity.GraphToolkit.Editor;
 namespace PG.DialogueGraphEditor
 {
     [Serializable]
-    public class ChoiceNode : Node
+    public class ChoiceNode : BaseNode
     {
         private const string _OPTION_ID = "portCount";
         protected override void OnDefinePorts(IPortDefinitionContext context)
